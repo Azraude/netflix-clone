@@ -15,7 +15,8 @@ interface InfoModalProps {
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisible] = useState(!!visible);
   const { movieId } = useInfoModal();
-  const { data } = useMovie(movieId);
+  const { data = {} } = useMovie(movieId || null);
+
   const [isMuted, setIsMuted] = useState(true);
   const toggleMute = useCallback(() => {
     setIsMuted(!isMuted);
