@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   try {
     if (req.method === "POST") {
-      const { currentUser } = await serverAuth(req);
+      const { currentUser } = await serverAuth(req,res);
 
       const { movieId } = req.body;
 
@@ -35,7 +35,7 @@ export default async function handler(
       return res.status(200).json(user);
     }
     if (req.method === "DELETE") {
-      const { currentUser } = await serverAuth(req);
+      const { currentUser } = await serverAuth(req,res);
       console.log("currentUser:", currentUser);
 
       const { movieId } = req.body;
